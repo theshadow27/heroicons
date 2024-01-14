@@ -12,7 +12,6 @@ const vanBuilder = require('./build-vanjs')
 let transform = {
   react: async (svg, componentName, format, isDeprecated) => {
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
-    console.log({svg, componentName, format, component})
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
@@ -33,7 +32,7 @@ let transform = {
       .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
   },
-  vanjs: vanBuilder.buildSource,
+  vanjs: vanBuilder.buildSource, /* Potential Refactor: Move React/Vue out, create builder interface, support additional frameworks? */
   vue: (svg, componentName, format, isDeprecated) => {
     let { code } = compileVue(svg, {
       mode: 'module',

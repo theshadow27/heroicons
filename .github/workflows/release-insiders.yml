@@ -52,7 +52,10 @@ jobs:
 
       - name: 'Version `@heroicons/vue` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vue
-
+        
+      - name: 'Version `@heroicons/vanjs` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
+        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vanjs
+        
       - name: Publish `heroicons`
         run: npm publish --tag insiders
         env:
@@ -65,5 +68,10 @@ jobs:
 
       - name: Publish `@heroicons/vue`
         run: npm publish ./vue --tag insiders
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish `@heroicons/vanjs`
+        run: npm publish ./vanjs --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

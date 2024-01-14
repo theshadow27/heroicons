@@ -7,10 +7,12 @@ const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
 const { deprecated } = require('./deprecated')
+const vanBuilder = require('./build-vanjs')
 
 let transform = {
   react: async (svg, componentName, format, isDeprecated) => {
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
+    console.log({svg, componentName, format, component})
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
@@ -31,6 +33,7 @@ let transform = {
       .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
   },
+  vanjs: vanBuilder.buildSource,
   vue: (svg, componentName, format, isDeprecated) => {
     let { code } = compileVue(svg, {
       mode: 'module',
@@ -120,6 +123,8 @@ async function buildIcons(package, style, format) {
         }
         types.push(`declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;`)
         types.push(`export default ${componentName};`)
+      } else if(package === 'vanjs') {
+        vanBuilder.buildTypes(types, {package, style, format, componentName, svg, isDeprecated });
       } else {
         types.push(`import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';`)
         if (isDeprecated) {

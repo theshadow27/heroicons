@@ -8,7 +8,10 @@ const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
 const { deprecated } = require('./deprecated')
 const vanBuilder = require('./build-vanjs')
-
+/* Potential Refactor: 
+ - Move React/Vue out to packages={react: require('./build-react'), vue: require('./build-vue'), vanjs: require('./build-vanjs')} to support additional frameworks. 
+ - Potentially, dynamic require(`./build-${package}`) and eliminate hard dependencies 
+ */
 let transform = {
   react: async (svg, componentName, format, isDeprecated) => {
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
@@ -32,7 +35,7 @@ let transform = {
       .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
   },
-  vanjs: vanBuilder.buildSource, /* Potential Refactor: Move React/Vue out, create builder interface, support additional frameworks? */
+  vanjs: vanBuilder.buildSource, 
   vue: (svg, componentName, format, isDeprecated) => {
     let { code } = compileVue(svg, {
       mode: 'module',
@@ -122,8 +125,8 @@ async function buildIcons(package, style, format) {
         }
         types.push(`declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;`)
         types.push(`export default ${componentName};`)
-      } else if(package === 'vanjs') {
-        vanBuilder.buildTypes(types, {package, style, format, componentName, svg, isDeprecated });
+      } else if(package === 'vanjs') { 
+        types.push(vanBuilder.buildTypes({package, style, format, componentName, svg, isDeprecated }));
       } else {
         types.push(`import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';`)
         if (isDeprecated) {
@@ -148,14 +151,18 @@ async function buildIcons(package, style, format) {
 /**
  * @param {string[]} styles
  */
-async function buildExports(styles) {
+async function buildExports(styles, packageJson) {
   let pkg = {}
-
+  
   // To appease Vite's optimizeDeps feature which requires a root-level import
   pkg[`.`] = {
     import: `./index.esm.js`,
     require: `./index.js`,
   }
+
+  // handle custom type definitions (for easy Icon handling) at the root-level
+  if(packageJson?.files?.includes('index.d.ts')) 
+    pkg['.'].types = `./index.d.ts`
 
   // For those that want to read the version from package.json
   pkg[`./package.json`] = { default: './package.json' }
@@ -235,7 +242,7 @@ async function main(package) {
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports(['16/solid', '20/solid', '24/outline', '24/solid'])
+  packageJson.exports = await buildExports(['16/solid', '20/solid', '24/outline', '24/solid'], packageJson)
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 

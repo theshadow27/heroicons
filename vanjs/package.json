@@ -16,13 +16,15 @@
     "outline",
     "solid",
     "index.esm.js",
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "sideEffects": false,
   "exports": {
     ".": {
       "import": "./index.esm.js",
-      "require": "./index.js"
+      "require": "./index.js",
+      "types": "./index.d.ts"
     },
     "./package.json": {
       "default": "./package.json"

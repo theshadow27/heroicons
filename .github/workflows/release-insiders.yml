@@ -57,21 +57,21 @@ jobs:
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vanjs
         
       - name: Publish `heroicons`
-        run: npm publish --tag insiders
+        run: npm publish --tag insiders --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@theshadow27/heroicons-react`
-        run: npm publish ./react --tag insiders
+        run: npm publish ./react --tag insiders --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@theshadow27/heroicons-vue`
-        run: npm publish ./vue --tag insiders
+        run: npm publish ./vue --tag insiders --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@theshadow27/heroicons-vanjs`
-        run: npm publish ./vanjs --tag insiders
+        run: npm publish ./vanjs --tag insiders --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

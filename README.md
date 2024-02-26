@@ -16,8 +16,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/tailwindlabs/heroicons/releases"><img src="https://img.shields.io/npm/v/heroicons" alt="Latest Release"></a>
-    <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
+    <a href="https://github.com/theshadow27/heroicons/releases"><img src="https://img.shields.io/npm/v/heroicons" alt="Latest Release"></a>
+    <a href="https://github.com/theshadow27/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
 </p>
 
 ## Basic Usage
@@ -44,16 +44,16 @@ Both icon styles are preconfigured to be stylable by setting the `color` CSS pro
 
 ## React
 
-First, install `@heroicons/react` from npm:
+First, install `@theshadow27/heroicons-react` from npm:
 
 ```sh
-npm install @heroicons/react
+npm install @theshadow27/heroicons-react
 ```
 
 Now each icon can be imported individually as a React component:
 
 ```js
-import { BeakerIcon } from '@heroicons/react/24/solid'
+import { BeakerIcon } from '@theshadow27/heroicons-react/24/solid'
 
 function MyComponent() {
   return (
@@ -65,20 +65,20 @@ function MyComponent() {
 }
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/react/24/outline`, the 24x24 solid icons can be imported from `@heroicons/react/24/solid`, the 20x20 solid icons can be imported from `@heroicons/react/20/solid`, and 16x16 solid icons can be imported from `@heroicons/react/16/solid`.
+The 24x24 outline icons can be imported from `@theshadow27/heroicons-react/24/outline`, the 24x24 solid icons can be imported from `@theshadow27/heroicons-react/24/solid`, the 20x20 solid icons can be imported from `@theshadow27/heroicons-react/20/solid`, and 16x16 solid icons can be imported from `@theshadow27/heroicons-react/16/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
-[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/24/outline/)
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@theshadow27/heroicons-react/24/outline/)
 
 ## Vue
 
 _Note that this library currently only supports Vue 3._
 
-First, install `@heroicons/vue` from npm:
+First, install `@theshadow27/heroicons-vue` from npm:
 
 ```sh
-npm install @heroicons/vue
+npm install @theshadow27/heroicons-vue
 ```
 
 Now each icon can be imported individually as a Vue component:
@@ -92,15 +92,15 @@ Now each icon can be imported individually as a Vue component:
 </template>
 
 <script setup>
-import { BeakerIcon } from '@heroicons/vue/24/solid'
+import { BeakerIcon } from '@theshadow27/heroicons-vue/24/solid'
 </script>
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/vue/24/outline`, the 24x24 solid icons can be imported from `@heroicons/vue/24/solid`, the 20x20 solid icons can be imported from `@heroicons/vue/20/solid`, and the 16x16 solid icons can be imported from `@heroicons/vue/16/solid`.
+The 24x24 outline icons can be imported from `@theshadow27/heroicons-vue/24/outline`, the 24x24 solid icons can be imported from `@theshadow27/heroicons-vue/24/solid`, the 20x20 solid icons can be imported from `@theshadow27/heroicons-vue/20/solid`, and the 16x16 solid icons can be imported from `@theshadow27/heroicons-vue/16/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
-[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/24/outline/)
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@theshadow27/heroicons-vue/24/outline/)
 
 ## Contributing
 

@@ -9,7 +9,7 @@ export default new Proxy(
       }
 
       throw new Error(
-        `Importing from \`@heroicons/react\` directly is not supported. Please import from either \`@heroicons/react/16/solid\`, \`@heroicons/react/20/solid\`, \`@heroicons/react/24/solid\`, or \`@heroicons/react/24/outline\` instead.`
+        `Importing from \`@theshadow27/heroicons-react\` directly is not supported. Please import from either \`@theshadow27/heroicons-react/16/solid\`, \`@theshadow27/heroicons-react/20/solid\`, \`@theshadow27/heroicons-react/24/solid\`, or \`@theshadow27/heroicons-react/24/outline\` instead.`
       )
     },
   }

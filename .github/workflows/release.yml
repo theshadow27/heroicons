@@ -49,17 +49,17 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons/react`
+      - name: Publish `@theshadow27/heroicons-react`
         run: npm publish ./react --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons/vue`
+      - name: Publish `@theshadow27/heroicons-vue`
         run: npm publish ./vue --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
-      - name: Publish `@heroicons/vanjs`
+      - name: Publish `@theshadow27/heroicons-vanjs`
         run: npm publish ./vanjs --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          

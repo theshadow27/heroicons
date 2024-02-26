@@ -9,7 +9,7 @@ module.exports = new Proxy(
       }
 
       throw new Error(
-        `Importing from \`@heroicons/vanjs\` directly is not supported. Please import from either \`@heroicons/vanjs/16/solid\`, \`@heroicons/vanjs/20/solid\`, \`@heroicons/vanjs/24/solid\`, or \`@heroicons/vanjs/24/outline\` instead.`
+        `Importing from \`@theshadow27/heroicons-vanjs\` directly is not supported. Please import from either \`@theshadow27/heroicons-vanjs/16/solid\`, \`@theshadow27/heroicons-vanjs/20/solid\`, \`@theshadow27/heroicons-vanjs/24/solid\`, or \`@theshadow27/heroicons-vanjs/24/outline\` instead.`
       )
     },
   }

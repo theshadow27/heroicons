@@ -47,13 +47,13 @@ jobs:
       - name: 'Version `heroicons` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version
 
-      - name: 'Version `@heroicons/react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
+      - name: 'Version `@theshadow27/heroicons-react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix react
 
-      - name: 'Version `@heroicons/vue` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
+      - name: 'Version `@theshadow27/heroicons-vue` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vue
         
-      - name: 'Version `@heroicons/vanjs` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
+      - name: 'Version `@theshadow27/heroicons-vanjs` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vanjs
         
       - name: Publish `heroicons`
@@ -61,17 +61,17 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons/react`
+      - name: Publish `@theshadow27/heroicons-react`
         run: npm publish ./react --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons/vue`
+      - name: Publish `@theshadow27/heroicons-vue`
         run: npm publish ./vue --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons/vanjs`
+      - name: Publish `@theshadow27/heroicons-vanjs`
         run: npm publish ./vanjs --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

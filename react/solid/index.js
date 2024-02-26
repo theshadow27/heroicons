@@ -7,7 +7,7 @@ let proxy = new Proxy(
       }
 
       throw new Error(
-        `You\'re trying to import \`@heroicons/react/solid/${property}\` from Heroicons v1 but have installed Heroicons v2. Install \`@heroicons/react@v1\` to resolve this error.`
+        `You\'re trying to import \`@theshadow27/heroicons-react/solid/${property}\` from Heroicons v1 but have installed Heroicons v2. Install \`@theshadow27/heroicons-react@v1\` to resolve this error.`
       )
     },
   }
